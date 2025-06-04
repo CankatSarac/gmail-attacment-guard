@@ -18,9 +18,12 @@
   "sendAnywayButtonText": {
     "message": "إرسال على أي حال",
     "description": "نص زر تجاوز التحذير."
-  },
-  "addAttachmentButtonText": {
+  },  "addAttachmentButtonText": {
     "message": "إضافة مرفق",
     "description": "نص زر التركيز على إضافة مرفق."
+  },
+  "attachmentMissingTitle": {
+    "message": "مرفق مفقود؟",
+    "description": "عنوان حوار تحذير المرفق."
   }
 }

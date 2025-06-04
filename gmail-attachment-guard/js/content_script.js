@@ -4,6 +4,10 @@
 let isProcessingSend = false;
 let lastBlockedSendButton = null; // Store the send button that was blocked
 
+// Initialize coffee popup trigger
+let pageInteractionCount = 0;
+let lastCoffeePopupTime = localStorage.getItem('gag-coffee-last-shown') || '0';
+
 /**
  * The main handler for when a "Send" button is clicked.
  * @param {Event} event - The click event.
@@ -73,6 +77,12 @@ function handleSendClick(event) {
   isProcessingSend = false; // Reset
   lastBlockedSendButton = null;
   enableButton(sendButton); // Ensure it's enabled
+  
+  // Trigger coffee popup occasionally after successful sends
+  pageInteractionCount++;
+  if (pageInteractionCount % 5 === 0) { // Every 5th successful send
+    setTimeout(() => maybeTriggerCoffeePopup(), 3000);
+  }
 }
 
 
@@ -126,6 +136,19 @@ function initializeAttachmentListener() {
 // Start the extension
 if (document.readyState === "complete" || document.readyState === "interactive") {
   initializeAttachmentListener();
+  // Trigger coffee popup on initial page load occasionally
+  setTimeout(() => {
+    if (Math.random() < 0.1) { // 10% chance on page load
+      maybeTriggerCoffeePopup();
+    }
+  }, 5000); // Wait 5 seconds after page load
 } else {
-  document.addEventListener("DOMContentLoaded", initializeAttachmentListener);
+  document.addEventListener("DOMContentLoaded", () => {
+    initializeAttachmentListener();
+    setTimeout(() => {
+      if (Math.random() < 0.1) {
+        maybeTriggerCoffeePopup();
+      }
+    }, 5000);
+  });
 }
