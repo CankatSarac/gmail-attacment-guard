@@ -1,0 +1,36 @@
+﻿{
+  "appName": {
+    "message": "Gmail Guarda de Anexos",
+    "description": "O nome da extensÃ£o."
+  },
+  "appDescription": {
+    "message": "Avisa se vocÃª mencionar um anexo no Gmail mas esquecer de adicionÃ¡-lo.",
+    "description": "A descriÃ§Ã£o da extensÃ£o."
+  },
+  "attachmentKeywords": {
+    "message": "anexo,anexar,arquivo,documento,veja anexo,currÃ­culo,cv,fatura,relatÃ³rio,apresentaÃ§Ã£o,incluso,em anexo,anexando",
+    "description": "Lista separada por vÃ­rgulas de palavras-chave que sugerem um anexo."
+  },
+  "warningMessageText": {
+    "message": "VocÃª mencionou um anexo mas nÃ£o adicionou nenhum. Enviar mesmo assim?",
+    "description": "Mensagem de aviso mostrada ao usuÃ¡rio."
+  },
+  "sendAnywayButtonText": {
+    "message": "Enviar Mesmo Assim",
+    "description": "Texto para um botÃ£o para ignorar o aviso."
+  },
+  "addAttachmentButtonText": {
+    "message": "Adicionar Anexo",
+    "description": "Texto para um botÃ£o para focar em adicionar um anexo."
+  },
+  "attachmentMissingTitle": {
+    "message": "Anexo em Falta?",
+    "description": "TÃ­tulo para o diÃ¡logo de aviso de anexo."
+  },
+  "buyMeCoffee": {
+    "message": "https://coff.ee/cankatsarac",
+    "description": "Link to support the developer."
+  }
+}
+
+

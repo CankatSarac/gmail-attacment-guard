@@ -1,0 +1,46 @@
+{
+  "appName": {
+    "message": "Gmail Garde des Pièces Jointes",
+    "description": "Le nom de l'extension."
+  },
+  "appDescription": {
+    "message": "Vous avertit si vous mentionnez une pièce jointe dans Gmail mais oubliez de l'ajouter.",
+    "description": "La description de l'extension."
+  },
+  "attachmentKeywords": {
+    "message": "pièce jointe,joint,fichier,document,ci-joint,cv,curriculum vitae,facture,rapport,présentation,inclus,voir ci-joint,joindre",
+    "description": "Liste séparée par des virgules de mots-clés qui suggèrent une pièce jointe."
+  },
+  "warningMessageText": {
+    "message": "Vous avez mentionné une pièce jointe mais n'en avez ajouté aucune. Envoyer quand même ?",
+    "description": "Message d'avertissement affiché à l'utilisateur."
+  },
+  "sendAnywayButtonText": {
+    "message": "Envoyer Quand Même",
+    "description": "Texte pour un bouton pour contourner l'avertissement."
+  },
+  "addAttachmentButtonText": {
+    "message": "Ajouter une Pièce Jointe",
+    "description": "Texte pour un bouton pour se concentrer sur l'ajout d'une pièce jointe."
+  },
+  "attachmentMissingTitle": {
+    "message": "Pièce Jointe Manquante?",
+    "description": "Titre pour le dialogue d'avertissement de pièce jointe."
+  },  "buyMeCoffee": {
+    "message": "https://coff.ee/cankatsarac",
+    "description": "Link to support the developer."
+  },
+  "coffeePopupTitle": {
+    "message": "Soutenir le Développeur",
+    "description": "Title text for the coffee popup."
+  },
+  "coffeePopupSubtitle": {
+    "message": "Vous aimez Gmail Attachment Guard?",
+    "description": "Subtitle text for the coffee popup."
+  },
+  "coffeePopupButton": {
+    "message": "Offrez-moi un Café",
+    "description": "Button text for the coffee popup."
+  }
+}
+

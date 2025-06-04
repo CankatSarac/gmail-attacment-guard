@@ -1,0 +1,170 @@
+/* Gmail Attachment Guard Styles */
+
+/* ============= ATTACHMENT WARNING DIALOG ============= */
+.gag-dialog-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  z-index: 2147483646 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Google Sans', 'Roboto', Arial, sans-serif !important;
+}
+
+.gag-dialog {
+  background: white !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+  max-width: 480px !important;
+  min-width: 400px !important;
+  margin: 20px !important;
+  overflow: hidden !important;
+  animation: modalSlideIn 0.3s ease-out !important;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0 !important;
+    transform: scale(0.9) translateY(-20px) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
+  }
+}
+
+.gag-dialog-content {
+  padding: 24px !important;
+}
+
+.gag-dialog-title {
+  margin: 0 0 12px 0 !important;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  color: #3c4043 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.gag-dialog-title::before {
+  content: "⚠️" !important;
+  margin-right: 8px !important;
+  font-size: 24px !important;
+}
+
+.gag-dialog-message {
+  margin: 0 0 24px 0 !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #5f6368 !important;
+}
+
+.gag-coffee-container {
+  margin: 12px 0 20px 0 !important;
+  padding: 8px 0 !important;
+  border-top: 1px solid #e8eaed !important;
+  border-bottom: 1px solid #e8eaed !important;
+}
+
+.gag-coffee-container a {
+  color: #1a73e8 !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+.gag-coffee-container a:hover {
+  color: #1557b0 !important;
+  text-decoration: underline !important;
+}
+
+.gag-dialog-actions {
+  display: flex !important;
+  gap: 12px !important;
+  justify-content: flex-end !important;
+}
+
+.gag-button {
+  padding: 10px 20px !important;
+  border-radius: 6px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.gag-button:focus {
+  box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.3) !important;
+}
+
+.gag-button-primary {
+  background: #1a73e8 !important;
+  color: white !important;
+}
+
+.gag-button-primary:hover {
+  background: #1557b0 !important;
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.3) !important;
+}
+
+.gag-button-secondary {
+  background: transparent !important;
+  color: #1a73e8 !important;
+  border: 1px solid #dadce0 !important;
+}
+
+.gag-button-secondary:hover {
+  background: #f8f9fa !important;
+  border-color: #1a73e8 !important;
+}
+
+/* ============= LEGACY SUPPORT ============= */
+.gmail-attachment-guard-dialog {
+  font-family: 'Google Sans', 'Roboto', Arial, sans-serif !important;
+  font-size: 14px !important;
+  background-color: white !important;
+  border: none !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+  z-index: 2147483647 !important;
+  color: #3c4043 !important;
+}
+
+.gmail-attachment-guard-dialog p {
+  margin: 0 0 16px 0 !important;
+  color: #5f6368 !important;
+  line-height: 1.5 !important;
+}
+
+.gmail-attachment-guard-dialog button {
+  padding: 10px 16px !important;
+  border: 1px solid #dadce0 !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  background-color: white !important;
+  color: #1a73e8 !important;
+  transition: all 0.2s ease !important;
+}
+
+.gmail-attachment-guard-dialog button:hover {
+  background-color: #f8f9fa !important;
+  border-color: #1a73e8 !important;
+}
+
+.gmail-attachment-guard-dialog button:first-of-type {
+  margin-right: 12px !important;
+  background-color: #1a73e8 !important;
+  color: white !important;
+}
+
+.gmail-attachment-guard-dialog button:first-of-type:hover {
+  background-color: #1557b0 !important;
+}

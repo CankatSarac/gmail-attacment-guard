@@ -1,0 +1,36 @@
+﻿{
+  "appName": {
+    "message": "Gmailé™„ä»¶å«å£«",
+    "description": "æ‰©å±•çš„åç§°ã€‚"
+  },
+  "appDescription": {
+    "message": "å¦‚æžœæ‚¨åœ¨Gmailä¸­æåˆ°é™„ä»¶ä½†å¿˜è®°æ·»åŠ ï¼Œä¼šå‘å‡ºè­¦å‘Šã€‚",
+    "description": "æ‰©å±•çš„æè¿°ã€‚"
+  },
+  "attachmentKeywords": {
+    "message": "é™„ä»¶,é™„åŠ ,æ–‡ä»¶,æ–‡æ¡£,è§é™„ä»¶,ç®€åŽ†,cv,å‘ç¥¨,æŠ¥å‘Š,æ¼”ç¤ºæ–‡ç¨¿,é™„ä¸Š,è¯·æŸ¥çœ‹é™„ä»¶,æ­£åœ¨é™„åŠ ",
+    "description": "å»ºè®®é™„ä»¶çš„å…³é”®è¯é€—å·åˆ†éš”åˆ—è¡¨ã€‚"
+  },
+  "warningMessageText": {
+    "message": "æ‚¨æåˆ°äº†é™„ä»¶ä½†æ²¡æœ‰æ·»åŠ ã€‚ä»è¦å‘é€å—ï¼Ÿ",
+    "description": "å‘ç”¨æˆ·æ˜¾ç¤ºçš„è­¦å‘Šæ¶ˆæ¯ã€‚"
+  },
+  "sendAnywayButtonText": {
+    "message": "ä»è¦å‘é€",
+    "description": "è¦†ç›–è­¦å‘Šçš„æŒ‰é’®æ–‡æœ¬ã€‚"
+  },
+  "addAttachmentButtonText": {
+    "message": "æ·»åŠ é™„ä»¶",
+    "description": "ä¸“æ³¨äºŽæ·»åŠ é™„ä»¶çš„æŒ‰é’®æ–‡æœ¬ã€‚"
+  },
+  "attachmentMissingTitle": {
+    "message": "ç¼ºå°‘é™„ä»¶ï¼Ÿ",
+    "description": "é™„ä»¶è­¦å‘Šå¯¹è¯æ¡†çš„æ ‡é¢˜ã€‚"
+  },
+  "buyMeCoffee": {
+    "message": "https://coff.ee/cankatsarac",
+    "description": "Link to support the developer."
+  }
+}
+
+

@@ -1,0 +1,46 @@
+{
+  "appName": {
+    "message": "Gmail Anhang-Wächter",
+    "description": "Der Name der Erweiterung."
+  },
+  "appDescription": {
+    "message": "Warnt Sie, wenn Sie einen Anhang in Gmail erwähnen, aber vergessen, einen hinzuzufügen.",
+    "description": "Die Beschreibung der Erweiterung."
+  },
+  "attachmentKeywords": {
+    "message": "anhang,angehängt,datei,dokument,siehe anhang,lebenslauf,cv,rechnung,bericht,präsentation,beigefügt,im anhang,anhängen",
+    "description": "Kommagetrennte Liste von Schlüsselwörtern, die einen Anhang vermuten lassen."
+  },
+  "warningMessageText": {
+    "message": "Sie haben einen Anhang erwähnt, aber keinen hinzugefügt. Trotzdem senden?",
+    "description": "Warnmeldung, die dem Benutzer angezeigt wird."
+  },
+  "sendAnywayButtonText": {
+    "message": "Trotzdem Senden",
+    "description": "Text für eine Schaltfläche, um die Warnung zu überschreiben."
+  },
+  "addAttachmentButtonText": {
+    "message": "Anhang Hinzufügen",
+    "description": "Text für eine Schaltfläche, um sich auf das Hinzufügen eines Anhangs zu konzentrieren."
+  },
+  "attachmentMissingTitle": {
+    "message": "Anhang Fehlt?",
+    "description": "Titel für den Anhang-Warndialog."
+  },  "buyMeCoffee": {
+    "message": "https://coff.ee/cankatsarac",
+    "description": "Link zur Unterstützung des Entwicklers."
+  },
+  "coffeePopupTitle": {
+    "message": "Entwickler Unterstützen",
+    "description": "Title text for the coffee popup."
+  },
+  "coffeePopupSubtitle": {
+    "message": "Gefällt dir Gmail Attachment Guard?",
+    "description": "Subtitle text for the coffee popup."
+  },
+  "coffeePopupButton": {
+    "message": "Einen Kaffee spendieren",
+    "description": "Button text for the coffee popup."
+  }
+}
+

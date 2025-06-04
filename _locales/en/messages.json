@@ -1,0 +1,45 @@
+{
+  "appName": {
+    "message": "Gmail Attachment Guard",
+    "description": "The name of the extension."
+  },
+  "appDescription": {
+    "message": "Warns if you mention an attachment in Gmail but forget to add one.",
+    "description": "The description of the extension."
+  },  "attachmentKeywords": {
+    "message": "attachment,attached,file,document,see attached,resume,cv,invoice,report,presentation,enclosed,find attached,attaching",
+    "description": "Comma-separated list of keywords that suggest an attachment."
+  },
+  "warningMessageText": {
+    "message": "You mentioned an attachment but haven't added one. Send anyway?",
+    "description": "Warning message shown to the user."
+  },
+  "sendAnywayButtonText": {
+    "message": "Send Anyway",
+    "description": "Text for a button to override the warning."
+  },
+  "addAttachmentButtonText": {
+    "message": "Add Attachment",
+    "description": "Text for a button to focus on adding an attachment."
+  },
+  "attachmentMissingTitle": {
+    "message": "Attachment Missing?",
+    "description": "Title for the attachment warning dialog."
+  },  "buyMeCoffee": {
+    "message": "https://coff.ee/cankatsarac",
+    "description": "Link to support the developer."
+  },
+  "coffeePopupTitle": {
+    "message": "Support the Developer",
+    "description": "Title text for the coffee popup."
+  },
+  "coffeePopupSubtitle": {
+    "message": "Enjoying Gmail Attachment Guard?",
+    "description": "Subtitle text for the coffee popup."
+  },
+  "coffeePopupButton": {
+    "message": "Buy Me a Coffee",
+    "description": "Button text for the coffee popup."
+  }
+}
+
