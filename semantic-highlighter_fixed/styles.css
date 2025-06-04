@@ -1,0 +1,28 @@
+/* These styles are also injected directly by the content script for reliability */
+.sem-sentiment {
+  padding: 0.1em 0.2em;
+  margin: 0.05em;
+  border-radius: 0.2em;
+  display: inline;
+}
+
+.sem-sentiment-positive {
+  background-color: rgba(34, 197, 94, 0.2); /* green-500 with alpha */
+}
+
+.sem-sentiment-neutral {
+  background-color: rgba(229, 231, 235, 0.4); /* zinc-200 with alpha */
+}
+
+.sem-sentiment-negative {
+  background-color: rgba(239, 68, 68, 0.25); /* red-500 with alpha */
+}
+
+.sem-sentiment-risk {
+  background-color: rgba(249, 115, 22, 0.25); /* orange-500 with alpha */
+}
+
+/* Hover effect */
+.sem-sentiment:hover {
+  opacity: 0.9;
+}

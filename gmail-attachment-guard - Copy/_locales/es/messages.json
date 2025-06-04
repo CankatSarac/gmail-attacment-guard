@@ -1,0 +1,26 @@
+{
+  "appName": {
+    "message": "Gmail Guardia de Adjuntos",
+    "description": "El nombre de la extensión."
+  },
+  "appDescription": {
+    "message": "Te avisa si mencionas un adjunto en Gmail pero olvidas agregarlo.",
+    "description": "La descripción de la extensión."
+  },
+  "attachmentKeywords": {
+    "message": "adjunto,adjuntar,archivo,documento,adjuntado,currículum,cv,factura,informe,presentación,incluido,archivo adjunto,adjuntando",
+    "description": "Lista separada por comas de palabras clave que sugieren un adjunto."
+  },
+  "warningMessageText": {
+    "message": "Mencionaste un adjunto pero no has agregado ninguno. ¿Enviar de todos modos?",
+    "description": "Mensaje de advertencia mostrado al usuario."
+  },
+  "sendAnywayButtonText": {
+    "message": "Enviar de Todos Modos",
+    "description": "Texto para un botón para anular la advertencia."
+  },
+  "addAttachmentButtonText": {
+    "message": "Agregar Adjunto",
+    "description": "Texto para un botón para enfocar en agregar un adjunto."
+  }
+}

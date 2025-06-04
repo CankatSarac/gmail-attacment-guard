@@ -1,0 +1,26 @@
+{
+  "appName": {
+    "message": "Gmail Bijlage Bewaker",
+    "description": "De naam van de extensie."
+  },
+  "appDescription": {
+    "message": "Waarschuwt als je een bijlage noemt in Gmail maar vergeet er een toe te voegen.",
+    "description": "De beschrijving van de extensie."
+  },
+  "attachmentKeywords": {
+    "message": "bijlage,bijgevoegd,bestand,document,zie bijlage,cv,curriculum vitae,factuur,rapport,presentatie,ingesloten,bijgevoegd bestand,bijvoegen",
+    "description": "Kommagescheiden lijst van trefwoorden die een bijlage suggereren."
+  },
+  "warningMessageText": {
+    "message": "Je noemde een bijlage maar hebt er geen toegevoegd. Toch verzenden?",
+    "description": "Waarschuwingsbericht getoond aan de gebruiker."
+  },
+  "sendAnywayButtonText": {
+    "message": "Toch Verzenden",
+    "description": "Tekst voor een knop om de waarschuwing te negeren."
+  },
+  "addAttachmentButtonText": {
+    "message": "Bijlage Toevoegen",
+    "description": "Tekst voor een knop om te focussen op het toevoegen van een bijlage."
+  }
+}
