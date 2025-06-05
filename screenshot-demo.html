@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Attachment Guard - Screenshot Demo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Google Sans', 'Roboto', Arial, sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .gmail-mockup {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .gmail-header {
+            background: #4285f4;
+            color: white;
+            padding: 16px 24px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .compose-area {
+            padding: 24px;
+        }
+        .compose-field {
+            margin-bottom: 16px;
+        }
+        .compose-field label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 4px;
+            color: #3c4043;
+        }
+        .compose-field input,
+        .compose-field textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+        .compose-field textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .send-button {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 16px;
+        }
+        .demo-button {
+            background: #34a853;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 20px 10px;
+        }
+        .demo-button:hover {
+            background: #137333;
+        }
+        .instructions {
+            background: #e8f0fe;
+            border: 1px solid #4285f4;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h3>📸 Screenshot Instructions:</h3>
+        <p>1. Click "Show Dialog Demo" to see the attachment warning</p>
+        <p>2. Take screenshots for Chrome Web Store (recommended size: 1280x800 or 640x400)</p>
+        <p>3. You need 1-5 screenshots showing the extension in action</p>
+    </div>
+
+    <div class="gmail-mockup">
+        <div class="gmail-header">
+            📧 Gmail - Compose
+        </div>
+        <div class="compose-area">
+            <div class="compose-field">
+                <label>To:</label>
+                <input type="email" value="colleague@company.com" readonly>
+            </div>
+            <div class="compose-field">
+                <label>Subject:</label>
+                <input type="text" value="Monthly Report - Please see attached document" readonly>
+            </div>
+            <div class="compose-field">
+                <label>Message:</label>
+                <textarea readonly>Hi there,
+
+I hope this email finds you well. Please find the monthly report attached for your review.
+
+The document contains all the key metrics and analysis for this month's performance.
+
+Let me know if you have any questions!
+
+Best regards,
+John</textarea>
+            </div>
+            <button class="send-button" onclick="showDemo()">Send</button>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <button class="demo-button" onclick="showDemo()">Show Dialog Demo</button>
+        <button class="demo-button" onclick="location.reload()">Reset Demo</button>
+    </div>
+
+    <script src="js/i18n_utils.js"></script>
+    <script src="js/ui_handlers.js"></script>
+    <script>
+        function showDemo() {
+            // Simulate the attachment warning dialog
+            showConfirmationDialog(
+                document.querySelector('.send-button'),
+                () => {
+                    alert('Email sent anyway!');
+                },
+                () => {
+                    alert('Good choice! Add your attachment and try again.');
+                }
+            );
+        }
+
+        // Make sure functions are available
+        if (typeof showConfirmationDialog === 'undefined') {
+            function showConfirmationDialog(sendButton, onSendAnyway, onCancel) {
+                alert('Demo: Attachment warning would appear here!\n\nFor actual screenshots, load this page with the extension enabled.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "appName": {
+    "message": "Gmail附件衛士",
+    "description": "擴充功能的名稱。"
+  },
+  "appDescription": {
+    "message": "如果您在Gmail中提到附件但忘記新增，會發出警告。",
+    "description": "擴充功能的描述。"
+  },
+  "attachmentKeywords": {
+    "message": "附件,附加,檔案,文件,見附件,履歷,cv,發票,報告,簡報,附上,請查看附件,正在附加",
+    "description": "建議附件的關鍵詞逗號分隔清單。"
+  },
+  "warningMessageText": {
+    "message": "您提到了附件但沒有新增。仍要傳送嗎？",
+    "description": "向使用者顯示的警告訊息。"
+  },
+  "sendAnywayButtonText": {
+    "message": "仍要傳送",
+    "description": "覆蓋警告的按鈕文字。"
+  },  "addAttachmentButtonText": {
+    "message": "新增附件",
+    "description": "專注於新增附件的按鈕文字。"
+  },
+  "attachmentMissingTitle": {
+    "message": "缺少附件？",
+    "description": "附件警告對話框的標題。"
+  }
+}

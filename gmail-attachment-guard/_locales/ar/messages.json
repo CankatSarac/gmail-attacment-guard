@@ -1,0 +1,29 @@
+{
+  "appName": {
+    "message": "حارس المرفقات Gmail",
+    "description": "اسم الإضافة."
+  },
+  "appDescription": {
+    "message": "ينبهك إذا ذكرت مرفقاً في Gmail لكن نسيت إضافته.",
+    "description": "وصف الإضافة."
+  },
+  "attachmentKeywords": {
+    "message": "مرفق,مرفقات,ملف,وثيقة,انظر المرفق,سيرة ذاتية,cv,فاتورة,تقرير,عرض تقديمي,مضمن,في المرفق,إرفاق",
+    "description": "قائمة مفصولة بفواصل من الكلمات المفتاحية التي تشير إلى مرفق."
+  },
+  "warningMessageText": {
+    "message": "ذكرت مرفقاً لكن لم تضف أي مرفق. إرسال على أي حال؟",
+    "description": "رسالة التحذير المعروضة للمستخدم."
+  },
+  "sendAnywayButtonText": {
+    "message": "إرسال على أي حال",
+    "description": "نص زر تجاوز التحذير."
+  },  "addAttachmentButtonText": {
+    "message": "إضافة مرفق",
+    "description": "نص زر التركيز على إضافة مرفق."
+  },
+  "attachmentMissingTitle": {
+    "message": "مرفق مفقود؟",
+    "description": "عنوان حوار تحذير المرفق."
+  }
+}
