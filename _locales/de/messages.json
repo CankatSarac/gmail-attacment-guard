@@ -1,10 +1,9 @@
-{
-  "appName": {
-    "message": "Gmail Anhang-Wächter",
+{  "appName": {
+    "message": "Universal Anhang-Wächter",
     "description": "Der Name der Erweiterung."
   },
   "appDescription": {
-    "message": "Warnt Sie, wenn Sie einen Anhang in Gmail erwähnen, aber vergessen, einen hinzuzufügen.",
+    "message": "Warnt Sie, wenn Sie einen Anhang in Gmail, Outlook, Yahoo Mail und anderen E-Mail-Anbietern erwähnen, aber vergessen, einen hinzuzufügen.",
     "description": "Die Beschreibung der Erweiterung."
   },
   "attachmentKeywords": {

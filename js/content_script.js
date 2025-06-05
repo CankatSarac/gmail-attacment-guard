@@ -1,11 +1,33 @@
-// js/content_script.js
+// Universal Attachment Guard - Multi-provider Content Script
 
-console.log("Attachment Guard: content_script.js loading...");
+console.log("Universal Attachment Guard: content_script.js loading...");
 
-// State to prevent multiple warnings or re-processing for the same send attempt
+// Global state management
 let isProcessingSend = false;
 let lastBlockedSendButton = null;
-let pageInteractionCount = 0;
+let currentProvider = null;
+let providerDetector = null;
+
+/**
+ * Initialize provider detection
+ */
+function initializeProvider() {
+  try {
+    providerDetector = new EmailProviderDetector();
+    currentProvider = providerDetector.detectProvider();
+    
+    if (currentProvider) {
+      console.log(`Universal Attachment Guard: Detected provider: ${currentProvider.name}`);
+      return true;
+    } else {
+      console.warn("Universal Attachment Guard: No supported email provider detected on this page");
+      return false;
+    }
+  } catch (error) {
+    console.error("Universal Attachment Guard: Error initializing provider:", error);
+    return false;
+  }
+}
 
 /**
  * The main handler for when a "Send" button is clicked.
@@ -13,111 +35,200 @@ let pageInteractionCount = 0;
  * @param {HTMLElement} actualSendButton - The identified send button element.
  */
 function handleSendClick(originalEvent, actualSendButton) {
-  console.log("Attachment Guard: handleSendClick triggered for button:", actualSendButton);
+  console.log("Universal Attachment Guard: handleSendClick triggered for button:", actualSendButton);
 
-  if (!actualSendButton) {
-    console.warn("Attachment Guard (handleSendClick): actualSendButton is null.");
+  if (!actualSendButton || !currentProvider) {
+    console.warn("Universal Attachment Guard: Missing send button or provider configuration");
     return;
   }
 
+  // Allow if this is the programmatic "Send Anyway" click
   if (isProcessingSend && actualSendButton === lastBlockedSendButton) {
-    console.log("Attachment Guard: Allowing send (isProcessingSend true for the same button).");
-    isProcessingSend = false; // Reset for the next distinct send operation
+    console.log("Universal Attachment Guard: Allowing send (Send Anyway clicked)");
+    isProcessingSend = false;
     lastBlockedSendButton = null;
-    return; // Allow default action (which is the programmatic click from "Send Anyway")
-  }
-
-  // Ensure findComposeArea is available (defensive, root cause should be fixed)
-  if (typeof findComposeArea !== 'function') {
-    console.error("Attachment Guard: findComposeArea is NOT defined! Critical error. Check script loading order and syntax errors in dom_utils.js or preceding scripts.");
-    alert("Gmail Attachment Guard Error: A critical component (findComposeArea) is missing. Please try reloading the page or the extension. If the problem persists, check the browser console for errors.");
     return;
   }
 
-  const composeArea = findComposeArea(actualSendButton);
-  if (!composeArea) {
-    console.warn("Attachment Guard: Could not find compose area for button:", actualSendButton, ". Allowing send by default.");
+  // Check if we're in compose mode
+  if (!isInComposeMode(currentProvider)) {
+    console.log("Universal Attachment Guard: Not in compose mode, allowing send");
     return;
   }
 
-  const bodyText = getEmailBodyText(composeArea);
-  const subjectText = getEmailSubjectText(composeArea);
-  const fullEmailText = `${subjectText} ${bodyText}`;
-  const keywords = getLocalizedAttachmentKeywords(); // From i18n_utils.js
-  const mentionsAttachment = textContainsKeywords(fullEmailText, keywords); // From attachment_logic.js
-  const hasAttachments = hasActualAttachments(composeArea);
+  try {
+    const keywords = getLocalizedAttachmentKeywords(); // From i18n_utils.js
+    const shouldWarn = shouldShowAttachmentWarning(currentProvider, keywords); // From attachment_logic.js
 
-  console.log("Attachment Guard: Mentions attachment?", mentionsAttachment, "Has attachments?", hasAttachments);
+    console.log("Universal Attachment Guard: Should show warning?", shouldWarn);
 
-  if (mentionsAttachment && !hasAttachments) {
-    originalEvent.preventDefault();
-    originalEvent.stopPropagation();
-    originalEvent.stopImmediatePropagation();
+    if (shouldWarn) {
+      // Prevent the default send action
+      originalEvent.preventDefault();
+      originalEvent.stopPropagation();
+      originalEvent.stopImmediatePropagation();
 
-    console.log("Attachment Guard: Warning! Mentioned attachment, but none found.");
-    disableButton(actualSendButton); // From ui_handlers.js
-    lastBlockedSendButton = actualSendButton;
+      console.log("Universal Attachment Guard: Blocking send - attachment mentioned but not found");
+      
+      // Disable the send button temporarily
+      disableButton(actualSendButton);
+      lastBlockedSendButton = actualSendButton;
 
-    showConfirmationDialog( // From ui_handlers.js
-      actualSendButton,
-      () => { // onSendAnyway
-        console.log("Attachment Guard: User chose 'Send Anyway'.");
-        isProcessingSend = true;
-        enableButton(actualSendButton);
-        actualSendButton.click(); // Programmatically click the original send button
-      },
-      () => { // onCancel/Add Attachment
-        console.log("Attachment Guard: User chose to cancel or add attachment.");
-        enableButton(actualSendButton);
-        isProcessingSend = false;
-        lastBlockedSendButton = null;
-      }
-    );
-    return; // Event handled
+      // Show confirmation dialog
+      showConfirmationDialog(
+        actualSendButton,
+        () => { // onSendAnyway
+          console.log("Universal Attachment Guard: User chose 'Send Anyway'");
+          isProcessingSend = true;
+          enableButton(actualSendButton);
+          actualSendButton.click(); // Programmatically trigger send
+        },
+        () => { // onCancel/Add Attachment
+          console.log("Universal Attachment Guard: User chose to cancel or add attachment");
+          enableButton(actualSendButton);
+          isProcessingSend = false;
+          lastBlockedSendButton = null;
+        }
+      );
+      return;
+    }
+
+    console.log("Universal Attachment Guard: No warning needed, allowing send");
+    enableButton(actualSendButton);
+    isProcessingSend = false;
+    lastBlockedSendButton = null;
+
+  } catch (error) {
+    console.error("Universal Attachment Guard: Error in handleSendClick:", error);
+    // On error, allow send to proceed
+    enableButton(actualSendButton);
   }
-
-  console.log("Attachment Guard: Conditions not met for warning, or attachments present. Allowing send.");
-  enableButton(actualSendButton); // Ensure button is enabled if we didn't block it
-  isProcessingSend = false;
-  lastBlockedSendButton = null;
 }
 
+/**
+ * Check if a clicked element is a send button for the current provider
+ * @param {HTMLElement} element - The clicked element
+ * @returns {boolean} True if this is a send button
+ */
+function isSendButton(element) {
+  if (!currentProvider || !element) {
+    return false;
+  }
+
+  // Try provider-specific send button identification
+  if (currentProvider.selectors && currentProvider.selectors.sendButton) {
+    if (element.matches(currentProvider.selectors.sendButton)) {
+      return true;
+    }
+  }
+
+  // Fallback to universal send button detection
+  const fallbackSelectors = providerDetector.getFallbackSelectors('sendButton');
+  for (const selector of fallbackSelectors) {
+    if (element.matches(selector)) {
+      return true;
+    }
+  }
+
+  // Check for common send button patterns
+  const buttonText = (element.textContent || element.value || '').toLowerCase();
+  const ariaLabel = (element.getAttribute('aria-label') || '').toLowerCase();
+  const title = (element.getAttribute('title') || '').toLowerCase();
+  const tooltip = (element.getAttribute('data-tooltip') || '').toLowerCase();
+
+  const sendPatterns = ['send', 'enviar', 'küldés', 'gönder', 'skicka'];
+  const allText = `${buttonText} ${ariaLabel} ${title} ${tooltip}`;
+
+  return sendPatterns.some(pattern => allText.includes(pattern));
+}
+
+/**
+ * Initialize click listener for send buttons
+ */
 function initializeAttachmentListener() {
+  if (!currentProvider) {
+    console.warn("Universal Attachment Guard: No provider detected, cannot initialize listener");
+    return;
+  }
+
   document.body.addEventListener('click', function(event) {
-    const sendButtonCandidate = event.target.closest('div[role="button"][data-tooltip*="Send"]');
+    try {
+      const clickedElement = event.target;
+      
+      // Check if this is a send button or contains a send button
+      let sendButton = null;
+      
+      if (isSendButton(clickedElement)) {
+        sendButton = clickedElement;
+      } else {
+        // Check if clicked element is within a send button
+        const parentButton = clickedElement.closest('button, [role="button"], input[type="submit"]');
+        if (parentButton && isSendButton(parentButton)) {
+          sendButton = parentButton;
+        }
+      }
 
-    if (sendButtonCandidate) {
-      const tooltipText = sendButtonCandidate.getAttribute('data-tooltip')?.toLowerCase() || "";
-      const parentMenu = sendButtonCandidate.closest('div[role="menu"]');
-
-      // Check if it's a main send button (not "Schedule send" and not in a menu)
-      if (tooltipText.startsWith('send') && !parentMenu) {
-        // If the button was disabled by *us* and this click is NOT the programmatic "Send Anyway" click
-        if (sendButtonCandidate.disabled && sendButtonCandidate === lastBlockedSendButton && !isProcessingSend) {
-          console.log("Attachment Guard: Clicked on a button previously disabled by extension (and not via Send Anyway). Preventing default.");
+      if (sendButton) {
+        // Check if button was previously disabled by us
+        if (sendButton.disabled && sendButton === lastBlockedSendButton && !isProcessingSend) {
+          console.log("Universal Attachment Guard: Clicked on disabled send button, preventing action");
           event.preventDefault();
           event.stopPropagation();
           event.stopImmediatePropagation();
           return;
         }
-        handleSendClick(event, sendButtonCandidate);
+
+        handleSendClick(event, sendButton);
       }
+    } catch (error) {
+      console.error("Universal Attachment Guard: Error in click listener:", error);
     }
-  }, true); // Use capture phase
+  }, true); // Use capture phase to intercept early
 
-  console.log("Gmail Attachment Guard: Listener initialized.");
+  console.log(`Universal Attachment Guard: Click listener initialized for ${currentProvider.name}`);
 }
 
-// Start the extension
-function main() {
+/**
+ * Wait for page to be ready and provider to be available
+ */
+async function waitForProvider(maxAttempts = 10, delay = 1000) {
+  for (let i = 0; i < maxAttempts; i++) {
+    if (initializeProvider()) {
+      return true;
+    }
+    
+    console.log(`Universal Attachment Guard: Provider not detected, attempt ${i + 1}/${maxAttempts}`);
+    await new Promise(resolve => setTimeout(resolve, delay));
+  }
+  
+  return false;
+}
+
+/**
+ * Main initialization function
+ */
+async function main() {
+  console.log("Universal Attachment Guard: Starting initialization...");
+  
+  // Wait for provider detection
+  const providerDetected = await waitForProvider();
+  
+  if (!providerDetected) {
+    console.log("Universal Attachment Guard: No supported email provider found, extension will not activate");
+    return;
+  }
+
+  // Initialize attachment checking
   initializeAttachmentListener();
-  console.log("Attachment Guard: Main execution started.");
+  
+  console.log("Universal Attachment Guard: Successfully initialized");
 }
 
+// Start the extension when DOM is ready
 if (document.readyState === "complete" || document.readyState === "interactive") {
   main();
 } else {
   document.addEventListener("DOMContentLoaded", main);
 }
 
-console.log("Attachment Guard: content_script.js loaded and awaiting DOM ready or already complete.");
+console.log("Universal Attachment Guard: content_script.js loaded and ready");

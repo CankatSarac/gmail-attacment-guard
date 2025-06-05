@@ -1,13 +1,13 @@
 {
   "appName": {
-    "message": "Gmail Attachment Guard",
+    "message": "Universal Attachment Guard",
     "description": "The name of the extension."
   },
   "appDescription": {
-    "message": "Warns if you mention an attachment in Gmail but forget to add one.",
+    "message": "Prevents forgotten attachments across Gmail, Outlook, Yahoo Mail, and other email providers.",
     "description": "The description of the extension."
   },  "attachmentKeywords": {
-    "message": "attachment,attached,file,document,see attached,resume,cv,invoice,report,presentation,enclosed,find attached,attaching",
+    "message": "attachment,attached,file,document,see attached,resume,cv,invoice,report,presentation,enclosed,find attached,attaching,please find,document attached,file attached,with this email,sending you,shared file",
     "description": "Comma-separated list of keywords that suggest an attachment."
   },
   "warningMessageText": {
@@ -32,14 +32,17 @@
   "coffeePopupTitle": {
     "message": "Support the Developer",
     "description": "Title text for the coffee popup."
-  },
-  "coffeePopupSubtitle": {
-    "message": "Enjoying Gmail Attachment Guard?",
+  },  "coffeePopupSubtitle": {
+    "message": "Enjoying Universal Attachment Guard?",
     "description": "Subtitle text for the coffee popup."
   },
   "coffeePopupButton": {
     "message": "Buy Me a Coffee",
     "description": "Button text for the coffee popup."
+  },
+  "supportedProviders": {
+    "message": "Gmail, Outlook, Yahoo Mail, ProtonMail, Zoho Mail, iCloud Mail, AOL Mail",
+    "description": "List of supported email providers."
   }
 }
 

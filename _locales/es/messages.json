@@ -1,10 +1,9 @@
-{
-  "appName": {
-    "message": "Gmail Guardia de Adjuntos",
+{  "appName": {
+    "message": "Guardia Universal de Adjuntos",
     "description": "El nombre de la extensión."
   },
   "appDescription": {
-    "message": "Te avisa si mencionas un adjunto en Gmail pero olvidas agregarlo.",
+    "message": "Te avisa si mencionas un adjunto en Gmail, Outlook, Yahoo Mail y otros proveedores de correo pero olvidas agregarlo.",
     "description": "La descripción de la extensión."
   },
   "attachmentKeywords": {

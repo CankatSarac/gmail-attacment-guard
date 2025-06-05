@@ -1,10 +1,9 @@
-{
-  "appName": {
-    "message": "Gmail Garde des Pièces Jointes",
+{  "appName": {
+    "message": "Garde Universelle des Pièces Jointes",
     "description": "Le nom de l'extension."
   },
   "appDescription": {
-    "message": "Vous avertit si vous mentionnez une pièce jointe dans Gmail mais oubliez de l'ajouter.",
+    "message": "Vous avertit si vous mentionnez une pièce jointe dans Gmail, Outlook, Yahoo Mail et d'autres fournisseurs de messagerie mais oubliez de l'ajouter.",
     "description": "La description de l'extension."
   },
   "attachmentKeywords": {

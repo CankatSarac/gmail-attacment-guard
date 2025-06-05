@@ -1,6 +1,6 @@
-/* Gmail Attachment Guard Styles */
+/* Universal Attachment Guard Styles - Cross-Provider Compatible */
 
-/* ============= ATTACHMENT WARNING DIALOG ============= */
+/* ============= UNIVERSAL ATTACHMENT WARNING DIALOG ============= */
 .gag-dialog-overlay {
   position: fixed !important;
   top: 0 !important;
@@ -12,7 +12,9 @@
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-family: 'Google Sans', 'Roboto', Arial, sans-serif !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Google Sans', 'Helvetica Neue', Arial, sans-serif !important;
+  /* Ensure overlay appears above all email provider content */
+  backdrop-filter: blur(2px) !important;
 }
 
 .gag-dialog {

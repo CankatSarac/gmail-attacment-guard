@@ -1,12 +1,10 @@
-{
-  "appName": {
-    "message": "Gmail Ek Kontrolü"
+{  "appName": {
+    "message": "Evrensel Ek Kontrolü"
   },
   "appDescription": {
-    "message": "Bir ekten bahsettiğinizde ama eklemediğinizde sizi uyarır."
-  },
-  "attachmentKeywords": {
-    "message": "ek,ekte,dosya,belge,döküman,ektedir,cv,özgeçmiş,fatura,rapor,sunum,ilişikte,ekliyorum",
+    "message": "Gmail, Outlook, Yahoo Mail ve diğer e-posta sağlayıcılarında bir ekten bahsettiğinizde ama eklemediğinizde sizi uyarır."
+  },  "attachmentKeywords": {
+    "message": "ek,ekte,dosya,belge,döküman,ektedir,cv,özgeçmiş,fatura,rapor,sunum,ilişikte,ekliyorum,dosyayı ekliyorum,ekte gönderiyorum,attachment,attached,file,document,see attached,resume,invoice,report,presentation,enclosed,find attached,attaching,please find,document attached,file attached,with this email,sending you,shared file",
     "description": "Bir ekin varlığını düşündüren anahtar kelimelerin virgülle ayrılmış listesi."
   },
   "warningMessageText": {
