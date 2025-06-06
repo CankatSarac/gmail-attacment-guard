@@ -1,0 +1,21 @@
+# Privacy Policy for Universal Attachment Guard
+
+Last updated: [Current Date]
+
+## Data Collection
+Universal Attachment Guard does NOT collect, store, or transmit any personal data or email content.
+
+## How It Works
+- All processing occurs locally in your browser
+- No data is sent to external servers
+- No tracking or analytics are performed
+- No user accounts or profiles are created
+
+## Permissions
+The extension requires permissions to access email provider websites solely to:
+- Detect email composition interfaces
+- Analyze local email content for attachment keywords
+- Display warning dialogs when needed
+
+## Contact
+For questions about this privacy policy, contact: [dev@cankatsarac.com]
