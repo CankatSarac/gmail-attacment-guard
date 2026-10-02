@@ -1,32 +1,33 @@
 {
   "manifest_version": 3,
-  "name": "__MSG_appName__",
-  "version": "1.0.0",
-  "description": "__MSG_appDescription__",
-  "default_locale": "en",
-  "permissions": [
-    "storage" 
-  ],
-  "host_permissions": [
-    "*://mail.google.com/*"
-  ],
+  "name": "Attachment Guard",
+  "version": "1.1.0",
+  "description": "A local reminder before sending a Gmail draft that mentions an attachment. No email content uploads.",
+  "homepage_url": "https://extensions.teampire.uk/attachment-guard/",
   "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "release/icons/icon16.png",
+    "48": "release/icons/icon48.png",
+    "128": "release/icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "release/ui.html",
+    "default_title": "Attachment Guard"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src 'none'; img-src 'self' data: blob:; media-src 'self' blob:; style-src 'self';"
   },
   "content_scripts": [
     {
-      "matches": ["*://mail.google.com/*"],
-      "js": [
-        "js/dom_utils.js",
-        "js/i18n_utils.js",
-        "js/attachment_logic.js",
-        "js/ui_handlers.js",
-        "js/content_script.js"
+      "matches": [
+        "https://mail.google.com/*"
       ],
-      "css": ["css/styles.css"],
+      "js": [
+        "release/content.js"
+      ],
       "run_at": "document_idle"
     }
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*"
   ]
 }
